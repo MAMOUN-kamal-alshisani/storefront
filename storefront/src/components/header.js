@@ -6,10 +6,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/material/Menu';
-
+import { useSelector } from "react-redux";
 
 
 export default function Header(props) {
+  const state = useSelector((state) => state);
   return (
       <>
      
@@ -26,9 +27,10 @@ export default function Header(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+           OUR STORE
           </Typography>
           <Button color="inherit">Cart</Button>
+          {/* <Button color="inherit">Cart ({state.cart.count})</Button> */}
         </Toolbar>
       </AppBar>
     </Box>

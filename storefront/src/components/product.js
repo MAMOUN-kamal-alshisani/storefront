@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-
+import { AddProduct, inventory} from "../store/actions";
 
 const Products = (props) => {
   // const classes = useStyle();
@@ -24,15 +24,15 @@ const Products = (props) => {
                 <Card >
                   <CardMedia
                     
-                    title={product.productName}
+                    title={product.name}
                   />
                   <CardContent >
                     <Typography gutterBottom variant="h5" component="h2">
-                      {product.productName}
+                      {product.name}
                     </Typography>
                     <Typography>
                       Category: {product.name} <br />
-                      Price: {product.price} Jd <br />
+                      Price: {product.price} <br />
                       Inventory: {product.InventoryCount}
                     </Typography>
                   </CardContent>
@@ -40,7 +40,20 @@ const Products = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
-              
+                    <Button
+                      size="small"
+                      color="primary"
+                      onClick={(InventoryCount) => {
+                        if (product.InventoryCount) {
+                          props.AddProduct(product);
+                          props.inventory(product);
+                        } else {
+                          alert("out of stook");
+                        }
+                      }}
+                    >
+                      Add to Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -55,11 +68,11 @@ const Products = (props) => {
 const mapStateToProps = (state) => (
   // console.log("stateeeee",state)
   {
-  products: state.products.products,
-  ActiveCategory: state.categories.ActiveCategory,
+    products: state.products.products,
+    active: state.categories.ActiveCategory
 }
 );
-
+const mapDispatchToProps = { AddProduct, inventory };
 export default connect(mapStateToProps)(Products);
 // const Products =props=>{
 

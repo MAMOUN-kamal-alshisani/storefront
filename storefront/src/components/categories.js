@@ -1,12 +1,32 @@
-import React from "react";
 import { connect } from "react-redux";
-
-const ActiveCategory = (props) => {
-  return <h1>{props.ActiveCategory}</h1>;
+import React from "react";
+import {ActivedCategories, reset} from '../store/categories'
+// import { Button } from "@mui/material";
+import { Breadcrumbs, Link } from "@mui/material";
+const Categories = props => {
+    return (
+        <section>
+            <Breadcrumbs>
+       
+            <Link color="inherit" onClick={()=>props.ActivedCategories("Clothes")}>
+            Clothes
+        </Link>
+        <Link color="inherit" onClick={()=>props.ActivedCategories("FOOD")}>
+          FOOD
+        </Link>
+        <Link color="inherit" onClick={()=>props.ActivedCategories("ELECTRONICS")}>
+          ELECTRONICS
+        </Link>
+      </Breadcrumbs>
+        </section>
+    )
 };
-
 const mapStateToProps = (state) => ({
-  ActiveCategory: state.categories.ActiveCategory,
-});
+    categories: state.categories.categories,
+    active: state.categories.ActiveCategory,
+  });
+  
+  const mapDispatchToProps = { ActivedCategories, reset };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Categories);
 
-export default connect(mapStateToProps)(ActiveCategory);

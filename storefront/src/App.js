@@ -4,6 +4,7 @@ import Products from './components/product';
 
 import CategoriesComponent from './components/category';
 import ActiveCategory from './components/categories';
+import Carts from "./components/cartComponent";
 
 
 
@@ -38,10 +39,11 @@ import ActiveCategory from './components/categories';
 // import Status from './components/status';
 
 
-export default props => {
+export default (props) => {
   return (
     <>
        <Header />
+       <Carts/>
       <CategoriesComponent />
       <ActiveCategory/>
       <Products />
