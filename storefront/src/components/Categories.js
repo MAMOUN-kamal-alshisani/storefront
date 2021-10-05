@@ -14,9 +14,6 @@ const Categories = (props) => {
         <Link color="inherit" onClick={()=>props.CategoryActivate("Clothes")}>
         Clothes
         </Link>
-        
-
-
         <Link color="inherit" onClick={()=>props.CategoryActivate("Electronics")}>
         Electronics
         </Link>

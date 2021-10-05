@@ -9,7 +9,7 @@ let initialState = {
 }
 
  
-const categoriesReducer = (state = initialState, action) => {
+const CategoriesReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case "ACTIVE":
@@ -44,7 +44,7 @@ export const Reset = () => {
 
 
 
-export default categoriesReducer;
+export default CategoriesReducer;
 // here will add the reducer
 // a reducer will take the old state and return the new state
 // also a reducer will an action as a second paramter.

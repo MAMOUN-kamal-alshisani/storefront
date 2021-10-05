@@ -5,7 +5,7 @@ let initialState = {
  itemNumber: 0,
 };
 
-const cartReducer = (state = initialState, action) => {
+const CartReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case "ADD":
@@ -56,4 +56,4 @@ export const GetTheCart = (data) => {
 };
 
 
-export default cartReducer;
+export default CartReducer;

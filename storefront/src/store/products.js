@@ -8,7 +8,7 @@ let initialState = {
     ActiveProduct:[],
 };
 
-const productsReducer = (state = initialState, action) => {
+const ProductsReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -66,66 +66,4 @@ export const DeleteProduct = (product, idx) => {
 
 
 
-export default productsReducer;
-// const productReducer=(state = initialState, action) => {
-//     let { type, payload } = action;
-//     switch (type) {
-//         case 'Active':
-//             // let product = state.categories;
-//             let productitem = state.products.filter(product =>{
-
-//                 return  product.category === payload;
-
-//             });
-           
-//       return { products: state.products,
-//         ActiveProduct:productitem
-//      };
-      
-//       case 'AddProduct':
-//           state.products = state.products.map(product=>{
-
-//             if(product.name ===payload.name){
-//                 if(product.InventoryCount > 0){
-//                     product.InventoryCount  += -1;
-//                 }
-//                 return product;
-//             }
-//             return product;
-//           })
-   
-//       return {...state};
-
-//       case 'DeleteProduct':
-//           state.products =state.products.map(product=>{
-
-           
-//             if(product.name ===payload.name){
-//                 if(product.InventoryCount > 0){
-//                     product.InventoryCount  += +1;
-//                 }
-//                 return product;
-//             }
-//             return product;
-//           })
-//     default:
-//       return {...state};
-//         //   })
-//   }
-// };
-
-
-// export function AddProduct  (name) {
-//     return {
-//         type: "AddProduct",
-//         payload: name,
-//     }
-// };
-// export function DeleteProduct(name) {
-//     return {
-//       type: "DeleteProduct",
-//       payload: name,
-//     };
-//   };
-
-                // export default productReducer;
+export default ProductsReducer;

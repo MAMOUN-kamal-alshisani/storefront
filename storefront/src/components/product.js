@@ -8,29 +8,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { AddProduct,DeleteProduct } from "../store/products";
 import {inventory} from '../store/cart'
-// import "../../style/product.scss";
-// const useStyle = makeStyles((theme) => ({
-//   cardGrid: {
-//     paddingTop: theme.spacing(8),
-//     paddingBottom: theme.spacing(8),
-//   },
-//   card: {
-//     height: "100%",
-//     display: "flex",
-//     flexDirection: "column",
-//   },
-//   cardMedia: {
-//     paddingTop: "56.25%",
-//   },
-//   cardContent: {
-//     flexGrow: 1,
-//   },
-// }));
-
+import swal from 'sweetalert';
 const Products = (props) => {
   // const classes = useStyle();
   return (
@@ -43,8 +24,7 @@ const Products = (props) => {
                 <Card>
                   <CardMedia
                  
-                   
-                    // title={product.name}
+          
                     component="img"
                     height="194"
                     image={product.img}
@@ -75,7 +55,7 @@ const Products = (props) => {
                           props.AddProduct(product);
                           props.inventory(product);
                         } else {
-                          alert("out of stook");
+                          swal ( 'out of stock !' )
                         }
                       }}
                     
