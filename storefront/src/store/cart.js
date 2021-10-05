@@ -1,27 +1,59 @@
 
 let initialState = {
-    Cart: [],
-    show: false,
-    counter: 0,
-  };
-  
-  const CartReducer = (state = initialState, action) => {
-    const { type, payload } = action;
-    switch (type) {
+  cart: [],
+  show: false,
+ itemNumber: 0,
+};
 
-      case "ADD":
-        const products = state.Cart.map((product) => product.name);
-        if (!products.includes(payload.name)) {
-          let counter = state.counter + 1;
-          return { Cart: [...state.Cart, payload], show: true, counter: counter };
-        }
-        return { Cart: state.Cart, show: true, counter: state.counter };
-
-      default:
-        return state;
-    }
-  };
+const cartReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "ADD":
+      const products = state.cart.map((product) => product.name);
+      
+        let counters = state.itemNumber + 1;
+        return { cart: [...state.cart, payload], show: true, itemNumber: counters };
+      
   
-  export default CartReducer;
-let jone =require('./categories')
-let mamoun =require('./categories')
+    case "Delete":
+      const product = state.cart.filter((product,idx) => {
+        return idx !== payload.idx;
+      });
+      let itemNumber = state.itemNumber - 1;
+      return { cart: product, show:state.show, itemNumber: itemNumber };
+
+      case "SHOW":
+        return {cart:state.cart,show:payload,itemNumber:state.itemNumber}
+    default:
+      return state;
+  }
+};
+
+
+
+
+
+
+export const showCart = (status) => {
+  return {
+    type: "SHOW",
+    payload: status,
+  };
+};
+
+export const inventory = (product) => {
+  return {
+    type: "AddProduct",
+    payload: product,
+  };
+};
+
+export const GetTheCart = (data) => {
+  return {
+    type: "GETCART",
+    payload: data,
+  };
+};
+
+
+export default cartReducer;
