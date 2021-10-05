@@ -42,6 +42,10 @@ const Products = (props) => {
                       <hr />
                   
                     </Typography>
+
+                    <Typography>
+                    {product.description}
+                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
