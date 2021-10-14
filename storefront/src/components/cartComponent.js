@@ -1,32 +1,34 @@
+
 import React from "react";
 import { If } from "react-if";
 import { connect } from "react-redux";
-import { DeleteProduct } from "../store/actions";
-import Button from '@mui/material/Button';
-// import "../../style/simplecart.scss";
+import { DeleteProduct } from "../store/products";
+import { Button } from "@material-ui/core";
 
-const Carts = (props) => {
+
+const Cart = (props) => {
   return (
     <>
-      <section className="simplecart-conitaner">
-        <If condition={() => props.Cart.length !== 0}>
-          <ul>
-            {props.Cart.map((el, idx) => {
-              return (
-                <li key={idx}>
-                  {/* <span>{el.name}</span> */}
-                  <Button
-                    color="secondary"
-                    onClick={() => {
-                      props.DeleteProduct(el);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                </li>
-              );
-            })}
-          </ul>
+      <section className="cart-conitaner">
+        <If condition={() => props.cart.length !== 0}>
+          <ui>
+            {props.cart.show &&
+              props.cart.cart.map((el, idx) => {
+                return (
+                  <li key={idx}>
+                    <span>{el.name}</span>
+                    <Button
+                      color="secondary"
+                      onClick={() => {
+                        props.DeleteProduct(el, idx);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </li>
+                );
+              })}
+          </ui>
         </If>
       </section>
     </>
@@ -34,8 +36,8 @@ const Carts = (props) => {
 };
 
 const mapStateToprops = (state) => {
-  return { Cart: state.Cart };
+  return { cart: state.cart };
 };
 const mapDispatchToProps = { DeleteProduct };
 
-export default connect(mapStateToprops, mapDispatchToProps)(Carts);
+export default connect(mapStateToprops, mapDispatchToProps)(Cart);

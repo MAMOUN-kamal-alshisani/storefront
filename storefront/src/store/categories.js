@@ -5,38 +5,46 @@ let initialState = {
         { name: 'Electronics', displayedName:'electronics', description :'Electronics comprises the physics, engineering, technology and applications that deal with the emission, flow and control of electrons in vacuum and matter.'},
         { name: 'Food', displayedName:'food', description :'If more of us valued food and cheer and song above hoarded gold, it would be a merrier world.'}
     ],
-    ActiveCategory:'',
+    activeCategory: "",
 }
-const categoriesReducer = (state = initialState, action) => {
-    const { type, payload } = action;
-    switch (type) {
-      case "ACTIVE":
-        let categories = state.categories;
-        let active = payload;
-        return { categories, ActiveCategory: active };
-  
-      case "RESET":
-        return initialState;
-      default:
-        return state;
-    }
+
+ 
+const CategoriesReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "ACTIVE":
+      let categories = state.categories;
+      let active = payload;
+     
+
+      return { categories, activeCategory: active,};
+
+    case "RESET":
+      return initialState;
+    default:
+      return state;
+  }
+};
+
+export const CategoryActivate = (name) => {
+  return {
+    type: "ACTIVE",
+    payload: name,
   };
-// we will add the action here, but idealy we need to separate them into their own files
-export const ActivedCategories = (name) => {
-    return {
-        type: 'Active',
-        payload: name
-    }
 };
 
-export const reset = () => {
-    return {
-        type: 'RESET'
-    }
+export const Reset = () => {
+  return {
+    type: "RESET",
+  };
 };
 
 
-export default categoriesReducer;
+
+
+
+
+export default CategoriesReducer;
 // here will add the reducer
 // a reducer will take the old state and return the new state
 // also a reducer will an action as a second paramter.

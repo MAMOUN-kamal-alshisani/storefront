@@ -1,13 +1,29 @@
-import React from 'react';
-import Header from './components/header';
-import Products from './components/product';
-
-import CategoriesComponent from './components/category';
-import ActiveCategory from './components/categories';
-import Carts from "./components/cartComponent";
 
 
+import React from "react";
 
+import CategoriesComponent from "./components/Categories";
+
+import Header from "./components/header";
+import Products from "./components/product";
+import ActiveCategory from "./components/category"
+import Cart from "./components/cartComponent";
+
+export default (props) => {
+  return (
+    <>
+       <Header />
+      <Cart/>
+      <CategoriesComponent />
+      <ActiveCategory/>
+      <Products />
+    
+     
+      {/*  */}
+      
+    </>
+  )
+};
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -39,15 +55,3 @@ import Carts from "./components/cartComponent";
 // import Status from './components/status';
 
 
-export default (props) => {
-  return (
-    <>
-       <Header />
-       <Carts/>
-      <CategoriesComponent />
-      <ActiveCategory/>
-      <Products />
-      
-    </>
-  )
-};
