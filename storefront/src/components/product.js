@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import { connect } from "react-redux";
 import { AddProduct,DeleteProduct } from "../store/products";
 import {inventory} from '../store/cart'
+
 import swal from 'sweetalert';
 const Products = (props) => {
   // const classes = useStyle();
@@ -23,8 +24,6 @@ const Products = (props) => {
               <Grid item key={product.name} xs={12} sm={6} md={4}>
                 <Card>
                   <CardMedia
-                 
-          
                     component="img"
                     height="194"
                     image={product.img}
@@ -48,9 +47,21 @@ const Products = (props) => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
+                  <a href="./productdetails/productdetail">
+                      <Button
+                        size="small"
+                        color="primary"
+                        onClick={() => props.productDetails(product)}
+                      >
+                        
+                        View
+                        
+                      </Button>
+                      </a>
+            
+            
+               
+                  
                     <Button
                       size="small"
                       color="primary"
@@ -67,6 +78,7 @@ const Products = (props) => {
                       Add to Cart
                     </Button>
                   </CardActions>
+           
                 </Card>
               </Grid>
             );

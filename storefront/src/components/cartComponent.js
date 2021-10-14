@@ -9,7 +9,7 @@ import { Button } from "@material-ui/core";
 const Cart = (props) => {
   return (
     <>
-      <section className="simplecart-conitaner">
+      <section className="cart-conitaner">
         <If condition={() => props.cart.length !== 0}>
           <ui>
             {props.cart.show &&
